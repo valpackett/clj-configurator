@@ -1,4 +1,4 @@
-(defproject clj-configurator "0.1.1-SNAPSHOT"
+(defproject clj-configurator "0.1.1"
   :description "A powerful yet simple configuration library"
   :url "https://github.com/myfreeweb/clj-configurator"
   :license {:name "WTFPL"
