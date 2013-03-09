@@ -5,6 +5,7 @@
   (to-type-of [this x]))
 
 (extend-protocol Typeable
+  nil     (to-type-of [this x] x)
   String  (to-type-of [this x] (str x))
   Long    (to-type-of [this x] (Long/parseLong x))
   Integer (to-type-of [this x] (Integer/parseInt x))
