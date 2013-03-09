@@ -22,7 +22,7 @@
                               (fmap (interpose-keywords "-" path) sources)
                               (fmap (interpose-keywords "." path) sources)
                               v)]
-                    (if (instance? (class v) r)
+                    (if (or (nil? v) (instance? (class v) r))
                       r
                       (to-type-of v r)))])))
          m)))

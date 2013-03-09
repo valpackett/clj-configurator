@@ -19,5 +19,12 @@
     => {:database {:url "test"}})
 
 (fact "config works with types"
-  (config :defaults {:a 1}
-          :sources [{:a 2}]) => {:a 2})
+  (config :defaults {:a 1
+                     :b nil
+                     :c "hello"}
+          :sources [{:a 2
+                     :b "b"
+                     :c 123}])
+    => {:a 2
+        :b "b"
+        :c "123"})
