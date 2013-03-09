@@ -17,11 +17,14 @@
            (let [path (conj a k)]
              (if (map? v)
                [k (process-tree v sources path)]
-               [k (to-type-of v (or (fmap #(get-in % path) sources)
-                                    (fmap #(get-in % (map name path)) sources)
-                                    (fmap (interpose-keywords "-" path) sources)
-                                    (fmap (interpose-keywords "." path) sources)
-                                    v))])))
+               [k (let [r (or (fmap #(get-in % path) sources)
+                              (fmap #(get-in % (map name path)) sources)
+                              (fmap (interpose-keywords "-" path) sources)
+                              (fmap (interpose-keywords "." path) sources)
+                              v)]
+                    (if (instance? (class v) r)
+                      r
+                      (to-type-of v r)))])))
          m)))
 
 (defn config [& {:keys [defaults sources]
