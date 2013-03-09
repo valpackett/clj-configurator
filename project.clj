@@ -4,10 +4,10 @@
   :license {:name "WTFPL"
             :url "http://www.wtfpl.net/about/"}
   :dependencies [[org.clojure/clojure "1.4.0"]]
-  :profiles {:dev {:dependencies [[midje "1.5-beta1"]
+  :profiles {:dev {:dependencies [[midje "1.5.0"]
                                   [lein-release "1.0.0"]
                                   [clj-toml "0.3.0"]]}}
-  :plugins [[lein-midje "3.0-alpha4"]
+  :plugins [[lein-midje "3.0.0"]
             [lein-release "1.0.0"]]
   :bootclasspath true
   :lein-release {:deploy-via :lein-deploy}
