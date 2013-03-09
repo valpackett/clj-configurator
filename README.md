@@ -1,7 +1,7 @@
 Current [semantic](http://semver.org/) version:
 
 ```clojure
-[clj-configurator "0.1.0"]
+[clj-configurator "0.1.1"]
 ```
 
 # clj-configurator
