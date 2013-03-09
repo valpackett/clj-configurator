@@ -17,8 +17,7 @@
            (let [path (conj a k)]
              (if (map? v)
                [k (process-tree v sources path)]
-               [k (to-type-of v (or (fmap k sources)
-                                    (fmap #(get-in % path) sources)
+               [k (to-type-of v (or (fmap #(get-in % path) sources)
                                     (fmap #(get-in % (map name path)) sources)
                                     (fmap (interpose-keywords "-" path) sources)
                                     (fmap (interpose-keywords "." path) sources)

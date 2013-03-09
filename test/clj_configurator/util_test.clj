@@ -3,6 +3,8 @@
         clj-configurator.util))
 
 (fact "to-type-of converts types"
+  (to-type-of nil 1) => 1
+  (to-type-of "yo" 123) => "123"
   (to-type-of 1 "123") => 123
   (to-type-of 1.0 "12.34") => 12.34
   (to-type-of true "true") => true
