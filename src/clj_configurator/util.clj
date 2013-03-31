@@ -1,18 +1,14 @@
 (ns clj-configurator.util
+  (:use coercer.core)
   (:require [clojure.string :as string]))
 
-(defprotocol Typeable
-  (to-type-of [this x]))
+(defmethod coerce [String Boolean] [s _]
+  (boolean (#{true "true" "True" "TRUE" 1 "1" "yes" "on"} s)))
 
-(extend-protocol Typeable
-  nil     (to-type-of [this x] x)
-  String  (to-type-of [this x] (str x))
-  Long    (to-type-of [this x] (Long/parseLong x))
-  Integer (to-type-of [this x] (Integer/parseInt x))
-  Double  (to-type-of [this x] (Double/parseDouble x))
-  Float   (to-type-of [this x] (Float/parseFloat x))
-  Boolean (to-type-of [this x] (boolean (#{true "true" "True" "TRUE" 1 "1" "yes" "on"} x)))
-  clojure.lang.Keyword (to-type-of [this x] (keyword x)))
+(defn to-type-of [x y]
+  (if (nil? x)
+    y
+    (coerce y (class x))))
 
 (defn string-variants [x]
   [x
