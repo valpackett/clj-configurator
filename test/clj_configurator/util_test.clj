@@ -13,4 +13,4 @@
 
 (fact "string-variants creates different variants"
   (string-variants "hello-world")
-    => ["hello-world" "HELLO-WORLD" "hello_world" "HELLO_WORLD"])
+    => ["hello-world" "HELLO-WORLD" "hello_world" "HELLO_WORLD" "hello.world" "HELLO.WORLD"])

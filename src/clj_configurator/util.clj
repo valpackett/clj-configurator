@@ -14,7 +14,9 @@
   [x
    (-> x string/upper-case)
    (-> x (string/replace "-" "_"))
-   (-> x (string/replace "-" "_") string/upper-case)])
+   (-> x (string/replace "-" "_") string/upper-case)
+   (-> x (string/replace "-" "."))
+   (-> x (string/replace "-" ".") string/upper-case)])
 
 (defmacro fmap [x y] `(first (filter identity (map ~x ~y))))
 
