@@ -3,7 +3,11 @@
   (:require [clojure.string :as string]))
 
 (defmethod coerce [String Boolean] [s _]
-  (boolean (#{true "true" "True" "TRUE" 1 "1" "yes" "on"} s)))
+  (boolean (#{"true" "1" "yes" "on" "fuck yeah"} (string/lower-case s))))
+
+(defmethod coerce [Integer Boolean] [i _] (not= i 0))
+
+(defmethod coerce [Long Boolean] [i _] (not= i 0))
 
 (defn to-type-of [x y]
   (if (nil? x)

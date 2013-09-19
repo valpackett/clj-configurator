@@ -7,6 +7,10 @@
   (to-type-of "yo" 123) => "123"
   (to-type-of 1 "123") => 123
   (to-type-of 1.0 "12.34") => 12.34
+  (to-type-of false 1) => true
+  (to-type-of true 123) => true
+  (to-type-of true 0) => false
+  (to-type-of false "tRuE") => true
   (to-type-of true "true") => true
   (to-type-of true "false") => false
   (to-type-of :kw "hello") => :hello)
