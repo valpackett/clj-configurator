@@ -18,6 +18,7 @@
    (-> x (string/replace "-" "."))
    (-> x (string/replace "-" ".") string/upper-case)])
 
+
 (defmacro fmap [x y] `(first (filter (comp not nil?) (map ~x ~y))))
 
 (defn lookup-variants [f k]
