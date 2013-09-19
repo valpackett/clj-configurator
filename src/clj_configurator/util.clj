@@ -28,4 +28,7 @@
   (fmap f (string-variants k)))
 
 (defn interpose-keywords [i x]
-  (keyword (apply str (interpose i (map name x)))))
+  (->> (map name x)
+       (interpose i)
+       (apply str)
+       keyword))
