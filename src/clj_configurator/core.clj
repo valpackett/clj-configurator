@@ -17,11 +17,12 @@
            (let [path (conj a k)]
              (if (map? v)
                [k (process-tree v sources path)]
-               [k (let [r (or (fmap #(get-in % path) sources)
-                              (fmap #(get-in % (map name path)) sources)
-                              (fmap (interpose-keywords "-" path) sources)
-                              (fmap (interpose-keywords "." path) sources)
-                              v)]
+               [k (let [r (first (filter (comp not nil?)
+                                   [(fmap #(get-in % path) sources)
+                                    (fmap #(get-in % (map name path)) sources)
+                                    (fmap (interpose-keywords "-" path) sources)
+                                    (fmap (interpose-keywords "." path) sources)
+                                    v]))]
                     (if (or (nil? v) (instance? (class v) r))
                       r
                       (to-type-of v r)))])))

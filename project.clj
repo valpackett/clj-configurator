@@ -3,7 +3,7 @@
   :url "https://github.com/myfreeweb/clj-configurator"
   :license {:name "WTFPL"
             :url "http://www.wtfpl.net/about/"}
-  :dependencies [[org.clojure/clojure "1.4.0"]
+  :dependencies [[org.clojure/clojure "1.5.1"]
                  [coercer "0.2.0"]]
   :profiles {:dev {:dependencies [[midje "1.5.0"]
                                   [lein-release "1.0.0"]
