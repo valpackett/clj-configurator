@@ -28,3 +28,23 @@
     => {:a 2
         :b "b"
         :c "123"})
+
+(fact "rudimentary command line argument (env style) parsing works"
+  (let [raw-args ["PORT=3000" 
+                  "DEBUG=true" 
+                  "PATH=ws/project" 
+                  "EMPTY_PERSISTS="
+                  "DOUBLE_EQUALS=1+2=3"]]
+    (config 
+      :sources [(from-args raw-args)] ; pass -main args in normally
+      :defaults {:port 9999 
+                 :debug false
+                 :path ""
+                 :empty-persists "default"
+                 :double-equals ""
+                 }) => {:port 3000
+                        :debug true
+                        :path "ws/project"
+                        :empty-persists "" 
+                        :double-equals "1+2=3"
+                       }))

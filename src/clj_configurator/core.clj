@@ -11,6 +11,17 @@
 
 (def props (Props.))
 
+(deftype Args [arg-map] clojure.lang.ILookup
+  (valAt [_ k] (lookup-variants #(get arg-map %) (name k))))
+
+(defn from-args [args] 
+  (let [arg-map (into {} (map (fn [arg] 
+                                (let [parts (.split arg "=" 2) 
+                                      arg-key (first parts)
+                                      arg-val (or (second parts) "")]
+                                  [arg-key arg-val])) args))]
+    (Args. arg-map)))
+
 (defn- process-tree [m sources a]
   (into {}
     (map (fn [[k v]]
